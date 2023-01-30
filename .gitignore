@@ -2,6 +2,5 @@ bin
 include
 lib
 .Python
-gud
 .envrc
 __pycache__

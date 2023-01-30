@@ -8,16 +8,16 @@ def test_booking_places(client):
     place = 2
     response = client.post('/purchasePlaces', data={'club': club, 'competition': competition, 'places': place})
     assert response.status_code == 200
-    assert b"Great-booking complete"
+    assert b"Great-booking complete" in response.data
 
 def test_booking_exceeding_places(client):
     place = 10
     response = client.post('/purchasePlaces', data={'club': club, 'competition': competition, 'places': place})
     assert response.status_code == 200
-    assert b"Booking incomplete !"
+    assert b"Booking incomplete !" in response.data
 
 def test_booking_over_12_places(client):
     place = 13
     response = client.post('/purchasePlaces', data={'club': club, 'competition': competition, 'places': place})
     assert response.status_code == 200
-    assert b"Booking incomplete ! 12 places maximum allowed !"
+    assert b"Booking incomplete ! 12 places maximum allowed !" in response.data
