@@ -8,6 +8,6 @@ def test_booking_number_of_places(client):
     place = 2
     response = client.post('/purchasePlaces', data={'club': club, 'competition': competition, 'places': place})
     assert response.status_code == 200
-    assert b"Great-booking complete ! You have reserved 2 places." in response.data
+    assert b"You have reserved 2 places." in response.data
     assert b"Points available: 2" in response.data
 
