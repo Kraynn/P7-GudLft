@@ -20,9 +20,11 @@ app.secret_key = 'something_special'
 competitions = loadCompetitions()
 clubs = loadClubs()
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
+
 
 @app.route('/showSummary',methods=['POST'])
 def showSummary():
@@ -52,8 +54,9 @@ def purchasePlaces():
 
 
 @app.route('/displayClubs')
-def display_points():
+def displayClubs():
     return render_template('clubs.html', clubs=clubs)
+
 
 @app.route('/logout')
 def logout():
