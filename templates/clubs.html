@@ -1,0 +1,24 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>GUDLFT Clubs Points </title>
+    </head>
+    <body>
+        <h1>Clubs:</h1>
+            <ul>
+                {% for club in clubs %}
+                <li>
+                    {{ club['name'] }}<br/>
+                    Number of Points: {{ club['points'] }}
+                </li>
+                {% endfor %}
+            </ul>
+    </body>
+    <button onclick="Back()"> Back </button>
+    <script>
+        function Back() {
+          window.history.back();
+        }
+    </script>
+</html>
