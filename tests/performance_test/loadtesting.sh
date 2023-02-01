@@ -1,0 +1,1 @@
+locust -f locust.py --host http://localhost:5000 -- users 6 --spawn-rate 6
