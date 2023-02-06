@@ -5,11 +5,6 @@
     <title>GUDLFT Registration</title>
 </head>
 <body>
-    {% with messages = get_flashed_messages()%}
-        {% if messages %}
-            <h1>{{message}}</h1>
-        {% endif %}
-    {% endwith %}
     <h1>Welcome to the GUDLFT Registration Portal!</h1>
     Please enter your secretary email to continue:
         {% with messages = get_flashed_messages()%}
