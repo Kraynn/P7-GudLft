@@ -1,6 +1,6 @@
 import json
 from flask import Flask,render_template,request,redirect,flash,url_for
-
+from datetime import datetime
 
 def loadClubs():
     with open('clubs.json') as c:
@@ -39,9 +39,13 @@ def book(competition,club):
     foundClub = [c for c in clubs if c['name'] == club][0]
     foundCompetition = [c for c in competitions if c['name'] == competition][0]
     if foundClub and foundCompetition:
-        return render_template('booking.html',club=foundClub,competition=foundCompetition)
+        if datetime.strptime(foundCompetition['date'], '%Y-%m-%d %H:%M:%S') < datetime.now():
+            flash("Competition closed - Try another one")
+            return render_template('welcome.html', club=foundClub, competitions=competitions)
+        else:
+            return render_template('booking.html',club=foundClub,competition=foundCompetition)
     else:
-        flash("Something went wrong-please try again")
+        flash("Something went wrong - Please try again")
         return render_template('welcome.html', club=club, competitions=competitions)
 
 
@@ -54,17 +58,17 @@ def purchasePlaces():
     if placesRequired <= 12 and int(competition['numberOfPlaces']) > 0:
         if placesRequired <= points_available:
             competition['numberOfPlaces'] = int(competition['numberOfPlaces']) - placesRequired
-            flash('Great-booking complete !')
+            flash('Great - Booking complete ')
             if competition['numberOfPlaces'] >= 0 and placesRequired <= points_available:
                 club['points'] = points_available - placesRequired
                 flash('You have reserved {} places.'.format(placesRequired))
         else:
-            flash('Booking incomplete ! Not enough places in your wallet !')
+            flash('Booking incomplete - Not enough places in your wallet ')
     else:
         if competition['numberOfPlaces'] > 0:
-            flash('Booking incomplete ! 12 places maximum allowed !')
+            flash('Booking incomplete - 12 places maximum allowed ')
         else:
-            flash('Booking incomplete ! The competition is full !')    
+            flash('Booking incomplete - The competition is full ')    
     return render_template('welcome.html', club=club, competitions=competitions)
 
 
