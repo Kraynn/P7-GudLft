@@ -9,3 +9,4 @@ def test_login_true(client):
 def test_login_false(client):
     response = client.post('/showSummary',data={'email': 'false@user.com'})
     assert not response.status_code == 200
+    assert response.status_code == 302
