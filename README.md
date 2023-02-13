@@ -44,6 +44,7 @@ Lancer le serveur :
 A partir de l'environnement virtuel créé, exécuter les commandes suivante:
 >
 >set FLASK_APP=server.py
+>
 > flask run
 
 
