@@ -53,7 +53,7 @@ Lancer les tests :
 
 Executer les commandes suivantes:
 >
-Tests avec pytest:
+Pytest:
 >
 >pytest tests\
 
