@@ -1,51 +1,78 @@
-# gudlift-registration
+# Güdlft - Projet #11
+__________________________
 
-1. Why
+Le programme a pour objet la création d'une plateforme de réservation de compétitions sportives.
+Un utilisateur peut à ses fins:
 
+- Se connecter selon son club et voir le solde des points chaque club.
+- Echanger les points de son club pour inscrire un athlète à une compétition.
 
-    This is a proof of concept (POC) project to show a light-weight version of our competition booking platform. The aim is the keep things as light as possible, and use feedback from the users to iterate.
+______________
+HOW TO INSTALL
+--------------
 
-2. Getting Started
+Importation des scripts:
+---------------------------
 
-    This project uses the following technologies:
-
-    * Python v3.x+
-
-    * [Flask](https://flask.palletsprojects.com/en/1.1.x/)
-
-        Whereas Django does a lot of things for us out of the box, Flask allows us to add only what we need. 
-     
-
-    * [Virtual environment](https://virtualenv.pypa.io/en/stable/installation.html)
-
-        This ensures you'll be able to install the correct packages without interfering with Python on your machine.
-
-        Before you begin, please ensure you have this installed globally. 
+Télécharger et extaire le contenu du repertoire https://github.com/Kraynn/P7-GudLft/ dans le répertoire local. 
+> 
+Puis déplacer le contenu dans le repertoire local voulu.
 
 
-3. Installation
+Ou cloner le répertoire via github en utilisant la commande:
+> git clone github.com/Kraynn/P7-GudLft/
 
-    - After cloning, change into the directory and type <code>virtualenv .</code>. This will then set up a a virtual python environment within that directory.
 
-    - Next, type <code>source bin/activate</code>. You should see that your command prompt has changed to the name of the folder. This means that you can install packages in here without affecting affecting files outside. To deactivate, type <code>deactivate</code>
+__________________________________________________________
+Création de l'environnement virtuel:
+------------------------------------
+Exectuer les commandes suivantes dans l'invité de commande au sein du répertoire local voulu:
+>
+>python -m venv gudlft
 
-    - Rather than hunting around for the packages you need, you can install in one step. Type <code>pip install -r requirements.txt</code>. This will install all the packages listed in the respective file. If you install a package, make sure others know by updating the requirements.txt file. An easy way to do this is <code>pip freeze > requirements.txt</code>
+>gudlft\Scripts\activate.bat
 
-    - Flask requires that you set an environmental variable to the python file. However you do that, you'll want to set the file to be <code>server.py</code>. Check [here](https://flask.palletsprojects.com/en/1.1.x/quickstart/#a-minimal-application) for more details
+>pip install -r requirements.txt
 
-    - You should now be ready to test the application. In the directory, type either <code>flask run</code> or <code>python -m flask run</code>. The app should respond with an address you should be able to go to using your browser.
+___________________________________________________
 
-4. Current Setup
 
-    The app is powered by [JSON files](https://www.tutorialspoint.com/json/json_quick_guide.htm). This is to get around having a DB until we actually need one. The main ones are:
-     
-    * competitions.json - list of competitions
-    * clubs.json - list of clubs with relevant information. You can look here to see what email addresses the app will accept for login.
 
-5. Testing
+Lancer le serveur :
+----------------------
 
-    You are free to use whatever testing framework you like-the main thing is that you can show what tests you are using.
+A partir de l'environnement virtuel créé, exécuter les commandes suivante:
+>
+>set FLASK_APP=server.py
+> flask run
 
-    We also like to show how well we're testing, so there's a module called 
-    [coverage](https://coverage.readthedocs.io/en/coverage-5.1/) you should add to your project.
+
+Lancer les tests :
+----------------------
+
+Executer les commandes suivantes:
+>
+Tests avec pytest:
+>
+>pytest tests\
+
+Coverage test:
+>
+>coverage run -m pytest
+>coverage html
+
+Locust stress test:
+>
+> cd tests\performance_test
+> locust -f locust.py
+
+
+***************************
+
+
+
+
+
+
+
 
